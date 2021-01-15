@@ -12,8 +12,8 @@ public class Service {
 
 	public static void main(String[] args) {
 
-		//saveProductData();
-		//updateProductData(1);
+		saveProductData();
+		updateProductData(1);
 		deleteProductData(1);
 		getProductData();
 	}
@@ -42,8 +42,7 @@ public class Service {
 		Transaction transaction = session.beginTransaction();
 		List<Product> pList = session.createQuery("from Product").list();
 		for (Product product : pList) {
-			if(product.getProductId()==productId)
-			{
+			if (product.getProductId() == productId) {
 				product.setProductName("LENOVO LAPTOP");
 				product.setProductPrice(1111.99);
 				session.update(product);
@@ -57,12 +56,16 @@ public class Service {
 		Transaction transaction = session.beginTransaction();
 		List<Product> pList = session.createQuery("from Product").list();
 		for (Product product : pList) {
-			if(product.getProductId()==productId)
-			{
-				
+			if (product.getProductId() == productId) {
+
 				session.delete(product);
 				transaction.commit();
 			}
 		}
+	}
+	
+	public static void deleteAllData()
+	{
+		
 	}
 }
